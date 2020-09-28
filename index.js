@@ -7,8 +7,8 @@
 // Who is the Author?
 var inquirer = require('inquirer');
 var fs = require('fs');
-var path = require('path')
-
+var path = require('path');
+var generateMarkdown = ("")
 const questions = [
     {
         type: 'input',
@@ -17,17 +17,17 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'installalled',
+        name: 'installed',
         message: 'How do you insatll to make this repo work?'
     },
     {
         type: 'input',
-        name: 'Usage',
+        name: 'usage',
         message: 'What is the usage?'
     },
     {
         type: 'input',
-        name: 'Credits',
+        name: 'credits',
         message: 'Who you want to give credit to?'
     },
 
@@ -47,18 +47,39 @@ const questions = [
 // function to write README file
 console.log(path.join(process.cwd()))
 function writeToFile(fileName, data) {
-    fs.writeFile(path.join(process.cwd()), fileName, generateMarkDown(data), function () {
-        console.log('here')
+    fs.writeFile (fileName, generateMarkDown(data),  () => {
     });
-
+// console.log(fileName)
+// console.log(data)
 }
+function renderBadge(license) {
+    return ''
+}
+
 function generateMarkDown(data) {
     console.log('data', data)
 
+
     return (
         `
-    # ${data.title}
-    `
+# Title: 
+${data.title}
+# Installed With:
+${data.installed}
+#🏆 We Used 
+ ${data.usage}
+# The Credit goes
+to
+ ${data.credits} 
+# The license we used is
+ ${data.license}
+
+# The author is 
+ ${data.author}
+`
+
+
+    
     )
 }
 
@@ -75,3 +96,4 @@ function init() {
 
 // function call to initialize program//
 init();
+
